@@ -1,0 +1,103 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WeatherAppWPF_MVVM">
+
+    <Style TargetType="TextBlock" BasedOn="{StaticResource BaseTextBlockStyle}" x:Key="HeaderText">
+        <Setter Property="Foreground" Value="{StaticResource ForegroundLightColorBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0 3 0 3"/>
+    </Style>
+
+    
+    <!--Default Designed Textbox-->
+    <Style TargetType="TextBox" x:Key="DefaultTextBox" BasedOn="{StaticResource BaseStyle}">
+        <Setter Property="BorderThickness" Value="0 0 0 1"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Margin" Value="0 5 0 5"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
+
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                    <Grid>
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="False"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                             </Border>
+
+                        <TextBlock Name="placeholder" FontFamily="{StaticResource LatoLight}"
+                                       Text="{TemplateBinding Tag}" FontSize="{TemplateBinding FontSize}"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"
+                                       Padding="{TemplateBinding Padding}" >
+
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+
+                        </TextBlock>
+
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <!--Regular Font Size-->
+    <Style TargetType="TextBlock" x:Key="PrimaryTextBlockM" BasedOn="{StaticResource BaseTextBlockStyle}">
+        <Setter Property="Foreground" Value="{StaticResource VeryLightColorBrush}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeLarge}"/>
+        <Setter Property="Padding" Value="10 5 0 0"/>
+    </Style>
+    <!--Large Font Size-->
+    <Style TargetType="TextBlock" x:Key="PrimaryTextBlockL" BasedOn="{StaticResource PrimaryTextBlockM}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeXXLarger}"/>
+        <Setter Property="FontFamily" Value="{StaticResource LatoBold}"/>
+        <!--<Setter Property="Padding" Value="5"/>-->
+    </Style>
+    <!--Small Font Size-->
+    <Style TargetType="TextBlock" x:Key="PrimaryTextBlockS" BasedOn="{StaticResource PrimaryTextBlockM}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeRegular}"/>
+        <!--<Setter Property="Padding" Value="10"/>-->
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="ControlTextBlockMain" BasedOn="{StaticResource PrimaryTextBlockS}">
+        <Setter Property="FontFamily" Value="{StaticResource LatoBold}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="ControlTextBlockThin" BasedOn="{StaticResource ControlTextBlockMain}">
+        <Setter Property="FontFamily" Value="{StaticResource LatoLight}"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeSmall}"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+    </Style>
+
+
+
+</ResourceDictionary>

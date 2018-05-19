@@ -1,0 +1,25 @@
+﻿<Window x:Class="WeatherAppWPF_MVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherAppWPF_MVVM"
+        mc:Ignorable="d" BorderThickness="0" Name="MainWindowView"
+        Title="Weather App" Height="500" Width="800"
+        WindowStyle="None" AllowsTransparency="True"
+        MinWidth="{Binding WindowMinimumWidth}" MinHeight="{Binding WindowMinimumHeight}"
+        Style="{StaticResource DefaultWindow}">
+
+  
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="{Binding ResizeBorderThickness}"
+                      CaptionHeight="{Binding TitleHeight}"
+                      CornerRadius="0"/>
+                       
+    </WindowChrome.WindowChrome>
+
+    <Border Background="{StaticResource ForegroundDarkColorBrush}">
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}"/>
+    </Border>
+
+</Window>

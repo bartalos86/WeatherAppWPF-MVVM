@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="WeatherAppWPF_MVVM.Controls.DailyWeatherControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WeatherAppWPF_MVVM"
+             xmlns:xlocal="clr-namespace:WeatherAppWPF_MVVM.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="263.2" d:DesignWidth="210.8" >
+
+    <Grid>
+
+        <Border CornerRadius="10" BorderBrush="White" Background="White">
+            <Border.Effect>
+                <DropShadowEffect Color="{StaticResource ForegroundLightColor}" ShadowDepth="2"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Day Text-->
+                <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=DayString}" Padding="5 10 5 5" FontSize="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=Height, Converter={local:ControlSizeToMainFontSizeConverter},UpdateSourceTrigger=Explicit}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Style="{StaticResource ControlTextBlockMain}" />
+
+                <!--Weather Image-->
+                <Viewbox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"  Margin="7">
+                    <Image 
+                       Source="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=WeatherImageSource, FallbackValue='pack://application:,,,/Images/Weathers/Sunny.png'}"
+                       />
+                </Viewbox>
+               
+
+                <!--Weather Description-->
+                <Viewbox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Margin="3">
+                    <TextBlock 
+                           Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=WeatherDescString, FallbackValue=Furcsa}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           Style="{StaticResource ControlTextBlockMain}"  />
+                </Viewbox>
+               
+
+                <!--Temperature String-->
+                <Viewbox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" >
+                    <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=TemperatureText, FallbackValue=0}" Margin="-1"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Style="{StaticResource ControlTextBlockThin}"  />
+                </Viewbox>
+                
+
+                <!--Min Max Temperature-->
+                <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Style="{StaticResource ControlTextBlockThin}" Padding="0 5">
+                    <Run Text="Min:" FontFamily="{StaticResource LatoBold}"/>
+                    <Run Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=MinTemperature, FallbackValue=0}" FontWeight="Regular"/>
+                    <Run FontFamily="{StaticResource LatoLight}" Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=Unit,StringFormat='°{0}'}"/>
+                    <Run Text="Max:" FontFamily="{StaticResource LatoBold}"/>
+                    <Run Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=MaxTemperature}" FontWeight="Regular"/>
+                    <Run FontFamily="{StaticResource LatoLight}" Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                       AncestorType={x:Type xlocal:DailyWeatherControl}}, 
+                       Path=Unit,StringFormat='°{0}'}"/>
+                    
+                </TextBlock>
+
+
+            </Grid>
+
+        </Border>
+
+
+    </Grid>
+
+
+</UserControl>

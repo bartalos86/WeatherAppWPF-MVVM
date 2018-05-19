@@ -1,0 +1,21 @@
+﻿<Window x:Class="WeatherAppWPF_MVVM.WindowViews.SettingsMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WeatherAppWPF_MVVM.WindowViews"
+        xmlns:local1="clr-namespace:WeatherAppWPF_MVVM"
+        mc:Ignorable="d" AllowsTransparency="True" WindowStyle="None"
+        Height="250" Width="500"
+        Style="{StaticResource DefaultWindow}" Title="{Binding Title}">
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="{Binding ResizeBorderThickness}"
+                      CaptionHeight="{Binding TitleHeight}"
+                      CornerRadius="0"/>
+
+    </WindowChrome.WindowChrome>
+
+    <Border Background="{StaticResource ForegroundDarkColorBrush}">
+        <Frame x:Name="MainFrame" Content="{Binding CurrentPageObject}"/>
+    </Border>
+</Window>

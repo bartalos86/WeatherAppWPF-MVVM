@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WeatherAppWPF_MVVM">
+
+
+    <Color x:Key="VeryLightColor">#f7f7f7</Color>
+    <SolidColorBrush Color="{StaticResource VeryLightColor}" x:Key="VeryLightColorBrush"/>
+
+    <Color x:Key="LightBlueColor">#187cf7</Color>
+    <SolidColorBrush Color="{StaticResource LightBlueColor}" x:Key="LightBlueColorBrush"/>
+
+    <Color x:Key="ForegroundLightColor">#b7b7b7</Color>
+    <SolidColorBrush Color="{StaticResource ForegroundLightColor}" x:Key="ForegroundLightColorBrush"/>
+
+    <Color x:Key="ForegroundDarkColor">#262626</Color>
+    <SolidColorBrush Color="{StaticResource ForegroundDarkColor}" x:Key="ForegroundDarkColorBrush"/>
+
+    <Color x:Key="BackgroundLightColor">#fcfcfc</Color>
+    <SolidColorBrush Color="{StaticResource BackgroundLightColor}" x:Key="BackgroundLightColorBrush"/>
+
+</ResourceDictionary>
