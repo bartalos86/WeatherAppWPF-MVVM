@@ -33,7 +33,7 @@ namespace WeatherAppWPF_MVVM.Functions
                 string response;
                 WeatherDataModel outputWeatherData;
                 dynamic JsonObjectData;
-
+                
                 try
                 {
                     response = webClient.DownloadString(webAddress);
